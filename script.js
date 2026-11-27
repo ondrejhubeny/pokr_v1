@@ -1,5 +1,5 @@
 const BOARD_ITEMS = [
-  { cat: 'pivo', label: 'Na čepu • Hvězda sládků', name: 'Pilsner Urquell 12°', desc: 'Zlatá hladinka s hustou pěnou, špičková péče o výčep.', price: '62 Kč', unit: '0,5 l' },
+  { cat: 'pivo', label: 'Na čepu • Hvězda sládků 2027', name: 'Pilsner Urquell 12°', desc: 'Zlatá hladinka s hustou pěnou, špičková péče o výčep.', price: '62 Kč', unit: '0,5 l' },
   { cat: 'pivo', label: 'Na čepu', name: 'Velkopopovický Kozel 11°', desc: 'Poctivý ležák plné chuti, parťák ke kulečníku i kvízu.', price: '52 Kč', unit: '0,5 l' },
   { cat: 'pivo', label: 'Na čepu • Speciál', name: 'Volba sládků — Měsíční speciál', desc: 'Rotující limitovaný speciál na pípě každý měsíc.', price: '59 Kč', unit: '0,4 / 0,5 l' },
   { cat: 'pivo', label: 'Na čepu • Nealko', name: 'Birell Pomelo & Grep / Kofola', desc: 'Osvěžení na čepu pro řidiče i horké odpoledne.', price: '48 Kč', unit: '0,5 l' },
@@ -22,28 +22,26 @@ const BOARD_ITEMS = [
   { cat: 'fokace', label: 'Pro partu', name: 'Pivní prkno chuťovek', desc: 'Cibulové kroužky, pizza tyčinky, sýrové nugetky, nakládaný hermelín a 3 dipy.', price: '279 Kč', unit: '3–4 osoby' }
 ];
 
-let activeCat = 'all';
-let searchTerm = '';
+// Animované pozadí v HERO (plynulé prolínání fotek)
+const heroSlides = document.querySelectorAll('.hero-slide');
+let currentSlide = 0;
+if (heroSlides.length > 1) {
+  setInterval(() => {
+    heroSlides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % heroSlides.length;
+    heroSlides[currentSlide].classList.add('active');
+  }, 5500);
+}
 
+// Menu tabule — výchozí kategorie "Na čepu" (neotevírá hned celé menu)
+let activeCat = 'pivo';
 const boardList = document.getElementById('boardList');
 const tabs = document.querySelectorAll('.btab');
-const searchInput = document.getElementById('menuSearch');
 
 function renderBoard() {
-  const q = searchTerm.trim().toLowerCase();
-  const filtered = BOARD_ITEMS.filter((item) => {
-    const matchesCat = activeCat === 'all' || item.cat === activeCat;
-    const matchesQuery = !q ||
-      item.name.toLowerCase().includes(q) ||
-      item.desc.toLowerCase().includes(q) ||
-      item.label.toLowerCase().includes(q);
-    return matchesCat && matchesQuery;
-  });
-
-  if (!filtered.length) {
-    boardList.innerHTML = `<div class="board-empty">Pro výraz „${searchTerm}“ jsme na ukázkové tabuli nic nenašli. Zkuste jiné slovo nebo kategorii.</div>`;
-    return;
-  }
+  const filtered = activeCat === 'all'
+    ? BOARD_ITEMS
+    : BOARD_ITEMS.filter((item) => item.cat === activeCat);
 
   boardList.innerHTML = filtered.map((item) => `
     <article class="board-item">
@@ -67,11 +65,6 @@ tabs.forEach((t) => {
     activeCat = t.dataset.cat;
     renderBoard();
   });
-});
-
-searchInput.addEventListener('input', (e) => {
-  searchTerm = e.target.value;
-  renderBoard();
 });
 
 renderBoard();

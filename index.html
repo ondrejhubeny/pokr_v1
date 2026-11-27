@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>POKR Znojmo — Pivnice, Pizza, Burgery, Hry &amp; Catering</title>
-  <meta name="description" content="Pivnice Pizza POKR ve Znojmě v novém kabátě. Hvězda sládků na čepu, pizza, burgery, řízky, fokáče, kulečník, šipky, fotbálek a catering pro soukromé akce.">
+  <meta name="description" content="Pivnice Pizza POKR ve Znojmě v novém kabátě. Obhájená Hvězda sládků pro rok 2027, pizza, burgery, řízky, fokáče, Kozlí kvíz každé pondělí, kulečník, šipky, fotbálek a catering.">
   <link rel="icon" type="image/png" href="assets/logo-mark.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,37 +20,66 @@
       </a>
 
       <nav class="nav" aria-label="Hlavní navigace">
-        <a href="#prostory">Prostory &amp; Hry</a>
-        <a href="#tabule">Menu Tabule</a>
+        <a href="#tabule">Jídelní lístek</a>
         <a href="#catering">Catering &amp; Akce</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
 
       <div class="topbar-right">
-        <a href="tel:+420608822342" class="phone-tag">+420 608 822 342</a>
+        <div class="header-icons" aria-label="Rychlý kontakt a sociální sítě">
+          <a href="tel:+420608822342" class="icon-btn" title="Zavolat: +420 608 822 342" aria-label="Zavolat +420 608 822 342">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/pivnicepokrznojmo" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Facebook Pivnice POKR" aria-label="Facebook Pivnice POKR">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M13.5 22v-8.2h2.75l.41-3.2H13.5V8.55c0-.93.26-1.56 1.59-1.56h1.7V4.12c-.29-.04-1.3-.12-2.48-.12-2.45 0-4.13 1.5-4.13 4.24v2.36H7.4v3.2h2.78V22h3.32z"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/pivnice_pizza_pokr/" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Instagram Pivnice Pizza POKR" aria-label="Instagram Pivnice Pizza POKR">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+        </div>
         <a href="#catering" class="cta-btn cta-crimson">Poptat akci</a>
         <button class="nav-btn" id="navBtn" aria-label="Otevřít navigaci" aria-expanded="false">MENU</button>
       </div>
     </div>
     <div class="drawer" id="drawer" hidden>
-      <a href="#prostory">Prostory &amp; Hry</a>
-      <a href="#tabule">Menu Tabule</a>
+      <a href="#tabule">Jídelní lístek</a>
       <a href="#catering">Catering &amp; Akce</a>
       <a href="#kontakt">Kontakt &amp; Mapa</a>
-      <a href="tel:+420608822342" class="cta-btn cta-crimson">Zavolat: +420 608 822 342</a>
+      <div class="drawer-socials">
+        <a href="tel:+420608822342" class="icon-btn" aria-label="Zavolat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/pivnicepokrznojmo" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8.2h2.75l.41-3.2H13.5V8.55c0-.93.26-1.56 1.59-1.56h1.7V4.12c-.29-.04-1.3-.12-2.48-.12-2.45 0-4.13 1.5-4.13 4.24v2.36H7.4v3.2h2.78V22h3.32z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/pivnice_pizza_pokr/" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+      </div>
+      <a href="#catering" class="cta-btn cta-crimson">Poptat akci</a>
     </div>
   </header>
 
   <main id="top">
-    <!-- Bold Poster Hero v barvách Pilsner Urquell -->
+    <!-- Hero s animovaným pozadím v zeleném Pilsner layoutu -->
     <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="hero-left">
-          <div class="status-line">
-            <span class="star-chip">★ HVĚZDA SLÁDKŮ</span>
-            <span class="mono-chip">ZNOJMO // NOVĚ ZREKONSTRUOVÁNO</span>
-          </div>
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-slide active" style="background-image: url('assets/hero-beer.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('assets/interior-renovated.jpg');"></div>
+        <div class="hero-slide hero-slide-mono" style="background-image: url('assets/bar-bw.jpg');"></div>
+        <div class="hero-overlay"></div>
+      </div>
 
+      <div class="wrap hero-inner">
+        <div class="hero-content">
           <h1>
             PIVNICE.<br>
             PIZZA.<br>
@@ -83,61 +112,10 @@
             </div>
           </div>
         </div>
-
-        <div class="hero-right">
-          <div class="poster-card poster-main">
-            <img src="assets/hero-beer.jpg" alt="Zlaté pivo s krémovou pěnou v Pivnici POKR">
-            <div class="poster-label">01 // HVĚZDA SLÁDKŮ NA ČEPU</div>
-          </div>
-          <div class="poster-subgrid">
-            <div class="poster-card">
-              <img src="assets/interior-renovated.jpg" alt="Zrekonstruovaný interiér POKR Znojmo">
-              <div class="poster-label">02 // NOVÝ INTERIÉR</div>
-            </div>
-            <div class="poster-card poster-mono">
-              <img src="assets/bar-bw.jpg" alt="Výčep a atmosféra Pivnice POKR">
-              <div class="poster-label">03 // ZNOJEMSKÁ KLASIKA</div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- Marquee Ticker v červené PU -->
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker-track">
-        <span>★ HVĚZDA SLÁDKŮ</span>
-        <span>•</span>
-        <span>NOVĚ ZREKONSTRUOVANÉ PROSTORY</span>
-        <span>•</span>
-        <span>PIZZA &amp; FOKÁČE</span>
-        <span>•</span>
-        <span>BURGERY &amp; ŘÍZKY</span>
-        <span>•</span>
-        <span>KULEČNÍK • ŠIPKY • FOTBÁLEK</span>
-        <span>•</span>
-        <span>CATERING &amp; SOUKROMÉ AKCE</span>
-        <span>•</span>
-        <span>POD SOUDNÍM VRCHEM, ZNOJMO</span>
-        <span>•</span>
-        <span>★ HVĚZDA SLÁDKŮ</span>
-        <span>•</span>
-        <span>NOVĚ ZREKONSTRUOVANÉ PROSTORY</span>
-        <span>•</span>
-        <span>PIZZA &amp; FOKÁČE</span>
-        <span>•</span>
-        <span>BURGERY &amp; ŘÍZKY</span>
-        <span>•</span>
-        <span>KULEČNÍK • ŠIPKY • FOTBÁLEK</span>
-        <span>•</span>
-        <span>CATERING &amp; SOUKROMÉ AKCE</span>
-        <span>•</span>
-        <span>POD SOUDNÍM VRCHEM, ZNOJMO</span>
-        <span>•</span>
-      </div>
-    </div>
-
-    <!-- Světlý krémovo-bílý blok: Prostory, rekonstrukce & hry -->
+    <!-- Světlý krémovo-bílý blok: Prostory, Hvězda sládků 2027, Kozlí kvíz & Hry -->
     <section class="section-light" id="prostory">
       <div class="wrap">
         <div class="section-top">
@@ -162,20 +140,20 @@
           </article>
 
           <article class="club-card">
-            <img src="assets/food-pizza-focaccia.jpg" alt="Pizza a domácí fokáč">
+            <img src="assets/hero-beer.jpg" alt="Pivo oceněné Hvězdou sládků pro rok 2027">
             <div class="club-card-body">
-              <span class="card-num">B // PEC &amp; PEČIVO</span>
-              <h3>Křupavá pizza &amp; horké fokáče</h3>
-              <p>Čerstvě vytažené z pece — od klasiky po náš pikantní POKR speciál a česnekový fokáč.</p>
+              <span class="card-num">B // HVĚZDA SLÁDKŮ 2027</span>
+              <h3>Obhájená Hvězda sládků pro rok 2027</h3>
+              <p>Znovu jsme obhájili prestižní ocenění za špičkovou péči o čepované pivo. Čisté trubky, ideální teplota a poctivá hladinka každý den.</p>
             </div>
           </article>
 
           <article class="club-card">
-            <img src="assets/food-burger-schnitzel.jpg" alt="Burger a smažený řízek">
+            <img src="assets/bar-bw.jpg" alt="Atmosféra pondělního Kozlího kvízu v Pivnici POKR">
             <div class="club-card-body">
-              <span class="card-num">C // POCTIVÁ KUCHYNĚ</span>
-              <h3>Burgery, řízky &amp; maso na prkně</h3>
-              <p>Šťavnaté hovězí burgery, zlatavé řízky i pečená žebra a kolena, co skvěle sednou k pivu.</p>
+              <span class="card-num">C // KAŽDÉ PONDĚLÍ V 19:00</span>
+              <h3>Kozlí kvíz každé pondělí od 19:00</h3>
+              <p>Složte tým, prověřte znalosti u skvěle načepovaného piva a zahrajte si o ceny i prestiž v naší pravidelné pondělní tradici.</p>
             </div>
           </article>
 
@@ -189,7 +167,7 @@
                 <span>🎱 Kulečník</span>
                 <span>🎯 Šipky</span>
                 <span>⚽ Fotbálek</span>
-                <span>🧠 Kvízové večery</span>
+                <span>🧠 Kozlí kvíz (Po 19:00)</span>
                 <span>🌿 Venkovní zahrádka</span>
               </div>
             </div>
@@ -206,18 +184,15 @@
             <span class="eyebrow eyebrow-gold">02 // NA ČEPU &amp; Z KUCHYNĚ</span>
             <h2>MENU TABULE POKR</h2>
           </div>
-          <div class="board-controls">
-            <input type="search" id="menuSearch" placeholder="Hledat (např. burger, řízek, fokáč, pizza...)" aria-label="Hledat v menu">
-          </div>
         </div>
 
         <div class="board-tabs" role="tablist" aria-label="Kategorie na tabuli">
-          <button class="btab active" data-cat="all">Vše</button>
-          <button class="btab" data-cat="pivo">Na čepu ★</button>
+          <button class="btab active" data-cat="pivo">Na čepu ★</button>
           <button class="btab" data-cat="pizza">Pizzy</button>
           <button class="btab" data-cat="burgery">Burgery</button>
           <button class="btab" data-cat="rizky">Řízky &amp; Maso</button>
           <button class="btab" data-cat="fokace">Fokáče &amp; Chuťovky</button>
+          <button class="btab btab-all" data-cat="all">Zobrazit vše</button>
         </div>
 
         <div class="board-list" id="boardList"></div>
@@ -225,8 +200,16 @@
         <div class="board-footer">
           <span>* Ukázka stálé nabídky — aktuální ceny a speciály na pípě přímo v podniku.</span>
           <div class="board-delivery">
-            <a href="https://wolt.com" target="_blank" rel="noopener noreferrer">Objednat přes Wolt ↗</a>
-            <a href="https://www.foodora.cz" target="_blank" rel="noopener noreferrer">Objednat přes Foodora ↗</a>
+            <a href="https://www.foodora.cz/restaurant/zy17/pivnice-pizza-pokr-zy17" target="_blank" rel="noopener noreferrer" class="foodora-btn">
+              <span class="foodora-logo" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="7.5" cy="6.5" r="2.6"/>
+                  <circle cx="16.5" cy="6.5" r="2.6"/>
+                  <path d="M12 6.5c-4.4 0-7.8 3.2-7.8 7.4 0 3.7 3.1 6.6 7.8 6.6s7.8-2.9 7.8-6.6c0-4.2-3.4-7.4-7.8-7.4zm-2.9 6.7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5.8 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-2.9 4.2c-1.4 0-2.5-.8-2.8-1.9h5.6c-.3 1.1-1.4 1.9-2.8 1.9z"/>
+                </svg>
+              </span>
+              <span>Objednat přes <strong>foodora</strong> ↗</span>
+            </a>
           </div>
         </div>
       </div>
@@ -322,8 +305,12 @@
               <strong><a href="mailto:info@pivnicepizzapokr.cz">info@pivnicepizzapokr.cz</a></strong>
             </div>
             <div>
-              <span>FACEBOOK</span>
-              <strong><a href="https://www.facebook.com/pivnicepokrznojmo" target="_blank" rel="noopener noreferrer">@pivnicepokrznojmo ↗</a></strong>
+              <span>SOCIÁLNÍ SÍTĚ</span>
+              <strong>
+                <a href="https://www.facebook.com/pivnicepokrznojmo" target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+                &nbsp;•&nbsp;
+                <a href="https://www.instagram.com/pivnice_pizza_pokr/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+              </strong>
             </div>
           </div>
 
@@ -357,7 +344,7 @@
         <span>Pivnice Pizza POKR • Znojmo</span>
       </div>
       <div class="footer-right">
-        <span>Návrh verze 1 — Pilsner Edition (Styl V3 × Barvy V2)</span>
+        <span>Pivnice Pizza POKR — Pilsner Edition</span>
         <span>© <span id="year"></span></span>
       </div>
     </div>
@@ -366,7 +353,7 @@
   <!-- Mobilní spodní lišta -->
   <div class="mobile-bar">
     <a href="tel:+420608822342">Zavolat</a>
-    <a href="#tabule">Menu</a>
+    <a href="#tabule">Jídelák</a>
     <a href="#catering" class="mobile-bar-accent">Akce / Catering</a>
   </div>
 
