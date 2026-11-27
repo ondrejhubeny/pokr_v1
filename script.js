@@ -1,26 +1,225 @@
-const BOARD_ITEMS = [
-  { cat: 'pivo', label: 'Na čepu • Hvězda sládků 2027', name: 'Pilsner Urquell 12°', desc: 'Zlatá hladinka s hustou pěnou, špičková péče o výčep.', price: '62 Kč', unit: '0,5 l' },
-  { cat: 'pivo', label: 'Na čepu', name: 'Velkopopovický Kozel 11°', desc: 'Poctivý ležák plné chuti, parťák ke kulečníku i kvízu.', price: '52 Kč', unit: '0,5 l' },
-  { cat: 'pivo', label: 'Na čepu • Speciál', name: 'Volba sládků — Měsíční speciál', desc: 'Rotující limitovaný speciál na pípě každý měsíc.', price: '59 Kč', unit: '0,4 / 0,5 l' },
-  { cat: 'pivo', label: 'Na čepu • Nealko', name: 'Birell Pomelo & Grep / Kofola', desc: 'Osvěžení na čepu pro řidiče i horké odpoledne.', price: '48 Kč', unit: '0,5 l' },
+const MENU_GROUPS = {
+  pivo: {
+    groups: [
+      {
+        title: 'Pivo čepované — hladinka',
+        note: '0,3 l | 0,475 l',
+        items: [
+          { name: 'Plzeň 12° (Pilsner Urquell)', price: '48,- | 66,-', unit: '0,3 l | 0,475 l' },
+          { name: 'Kozel 11°', price: '37,- | 48,-', unit: '0,3 l | 0,475 l' },
+          { name: 'Kozel černý 10°', price: '37,- | 48,-', unit: '0,3 l | 0,475 l' },
+          { name: 'Radegast 12°', price: '42,- | 56,-', unit: '0,3 l | 0,475 l' },
+          { name: 'Birell Pomelo Grep', price: '37,- | 48,-', unit: '0,3 l | 0,475 l' }
+        ]
+      },
+      {
+        title: 'Pivo lahvové',
+        items: [
+          { name: 'Plzeň 12°', price: '66,-', unit: '0,5 l' },
+          { name: 'Frisco', price: '51,-', unit: '0,33 l' },
+          { name: 'Corona', price: '62,-', unit: '0,33 l' },
+          { name: 'Birell – nealko', price: '48,-', unit: '0,5 l' }
+        ]
+      },
+      {
+        title: 'Točená limonáda, Nealko & Energetické nápoje',
+        items: [
+          { name: 'Bezová limonáda (točená)', price: '10,-', unit: '1 dcl' },
+          { name: 'Royal Crown Cola', price: '49,-', unit: '0,25 l' },
+          { name: 'Kofola', price: '49,-', unit: '0,25 l' },
+          { name: 'Targa pomeranč', price: '49,-', unit: '0,25 l' },
+          { name: 'Tonic, Tonic Ginger', price: '49,-', unit: '0,25 l' },
+          { name: 'Rauch dle nabídky', price: '49,-', unit: '0,25 l' },
+          { name: 'Rajec perlivá, neperlivá', price: '39,-', unit: '0,33 l' },
+          { name: 'Malinovka', price: '33,-', unit: '0,33 l' },
+          { name: 'Citronka', price: '33,-', unit: '0,33 l' },
+          { name: 'Red Bull', price: '65,-', unit: '0,25 l' }
+        ]
+      },
+      {
+        title: 'Teplé nápoje',
+        items: [
+          { name: 'Káva turecká', price: '39,-' },
+          { name: 'Espresso', price: '49,-' },
+          { name: 'Čaj dle nabídky', price: '39,-' },
+          { name: 'Grog', price: '57,-' }
+        ]
+      }
+    ]
+  },
 
-  { cat: 'pizza', label: 'Pizza • Hit podniku', name: 'POKR Speciál', desc: 'Rajčatový základ, mozzarella, šunka, slanina, salám, žampiony, jalapeños, česnek.', price: '205 Kč', unit: 'Ø 32 cm' },
-  { cat: 'pizza', label: 'Pizza', name: 'Bela Italia', desc: 'Rajčatový základ, mozzarella, prosciutto, čerstvá rukola, hobliny parmazánu.', price: '215 Kč', unit: 'Ø 32 cm' },
-  { cat: 'pizza', label: 'Pizza', name: 'Quattro Formaggi', desc: 'Smetana, mozzarella, niva, uzený sýr, hermelín, čerstvý pepř.', price: '195 Kč', unit: 'Ø 32 cm' },
-  { cat: 'pizza', label: 'Pizza', name: 'Provenzale', desc: 'Rajčatový základ, mozzarella, šunka, anglická slanina, kukuřice, feferonky.', price: '189 Kč', unit: 'Ø 32 cm' },
+  pizza: {
+    groups: [
+      {
+        title: 'Pizza (rajčatový / smetanový základ)',
+        note: 'Čerstvě z pece • 19 druhů',
+        items: [
+          { name: '1. Margherita', desc: 'rajčatové sugo, sýr, oregano', allergen: 'A, G', price: '165,-' },
+          { name: '2. Funghi', desc: 'rajčatové sugo, sýr, žampiony, oregano', allergen: 'A, G, L', price: '176,-' },
+          { name: '3. Cardinale', desc: 'rajčatové sugo, sýr, šunka, oregano', allergen: 'A, G, L', price: '187,-' },
+          { name: '4. Calimero', desc: 'rajčatové sugo, sýr, šunka, kukuřice, oregano', allergen: 'A, G', price: '199,-' },
+          { name: '5. Salami', desc: 'rajčatové sugo, sýr, salám, oregano', allergen: 'A, G, M', price: '199,-' },
+          { name: '6. Boccolina', desc: 'rajčatové sugo, sýr, slanina, oregano', allergen: 'A, G', price: '199,-' },
+          { name: '7. Silvano', desc: 'rajčatové sugo, sýr, šunka, kukuřice, žampiony, oregano', allergen: 'A, G, L', price: '215,-' },
+          { name: '8. Hawaii', desc: 'smetanový základ, sýr, šunka, kukuřice, ananas, oregano', allergen: 'A, F, G', price: '220,-' },
+          { name: '9. Diavola', desc: 'rajčatové sugo, sýr, pikantní salám, cibule, feferonky, jalapeños, oregano', allergen: 'A, D, G', price: '242,-' },
+          { name: '10. Tirola', desc: 'rajčatové sugo, sýr, slanina, šunka, vejce, oregano', allergen: 'A, D, G', price: '220,-' },
+          { name: '11. Provenciale', desc: 'rajčatové sugo, sýr, slanina, šunka, kozí rohy, kukuřice, oregano', allergen: 'A, G', price: '220,-' },
+          { name: '12. Spinaci', desc: 'smetanový základ, sýr, šunka, špenát, balkánský sýr, oregano', allergen: 'A, F, G', price: '226,-' },
+          { name: '13. Venezia', desc: 'rajčatové sugo, sýr, camembert, brusinky, oregano', allergen: 'A, G', price: '220,-' },
+          { name: '14. Quattro Formaggi', desc: 'rajčatové sugo, čtyři druhy sýrů, oregano', allergen: 'A, G', price: '242,-' },
+          { name: '15. Pronto Special', desc: 'rajčatové sugo, sýr, šunka, salám, gorgonzola, cibule, vejce, oregano', allergen: 'A, G, L, C, M', price: '242,-' },
+          { name: '16. Americana', desc: 'rajčatové sugo, sýr, šunka, salám, slanina, vejce, tabasco, oregano', allergen: 'A, G, D', price: '242,-' },
+          { name: '17. Prosciutto', desc: 'rajčatové sugo, sýr, mozzarella, prosciutto, rukola, oregano', allergen: 'A, G', price: '242,-' },
+          { name: '18. Bella Italia', desc: 'rajčatové sugo, sýr, mozzarella, rajčata, olivy, oregano', allergen: 'A, G', price: '220,-' },
+          { name: '19. POKR Pizza', desc: 'rajčatové sugo, sýr, šunka, slanina, feferonky, cibule, chilli, oregano', allergen: 'A, G', price: '237,-' }
+        ]
+      }
+    ],
+    extras: [
+      '<strong>Suroviny na pizzu navíc:</strong> 30,-',
+      '<strong>Dresing / kečup / česnek navíc:</strong> 25,-',
+      '<strong>Krabice / obal:</strong> 20,-'
+    ]
+  },
 
-  { cat: 'burgery', label: 'Burger • Bestseller', name: 'POKR Bacon Cheese Burger', desc: '180 g hovězího, máslová brioška, dvojitý cheddar, slanina, karamelizovaná cibule, hranolky.', price: '249 Kč', unit: 's hranolky' },
-  { cat: 'burgery', label: 'Burger • Pikantní', name: 'Jalapeño Smash Burger', desc: 'Dvojité křupavé smash hovězí, cheddar, jalapeños, chipotle mayo, hranolky.', price: '259 Kč', unit: 's hranolky' },
-  { cat: 'burgery', label: 'Burger', name: 'Crispy Chicken Burger', desc: 'Křupavé kuřecí prso, coleslaw, cheddar, česnekový dip, hranolky.', price: '229 Kč', unit: 's hranolky' },
+  'maso-salaty': {
+    groups: [
+      {
+        title: 'Maso na prkně + domácí focaccia',
+        items: [
+          { name: 'Mix mini řízečků 250 g', desc: 'podáváno s domácí focacciou', price: '220,-', unit: '250 g' },
+          { name: 'Mix mini řízečků 500 g', desc: 'podáváno s domácí focacciou', price: '394,-', unit: '500 g' },
+          { name: 'Pečené koleno 1000 g', desc: 'podáváno s domácí focacciou', price: '340,-', unit: '1000 g' },
+          { name: 'Vepřová žebra 500 g', desc: 'podáváno s domácí focacciou', price: '285,-', unit: '500 g' }
+        ]
+      },
+      {
+        title: 'Saláty + domácí focaccia',
+        items: [
+          { name: 'Míchaný salát se šunkou, vejcem a sýrem', desc: 'dresing + domácí focaccia', price: '199,-' },
+          { name: 'Míchaný salát s grilovaným camembertem', desc: 'dresing + domácí focaccia', price: '209,-' },
+          { name: 'Míchaný salát s kuřecím masem', desc: 'dresing + domácí focaccia', price: '220,-' },
+          { name: 'Míchaný salát s balkánským sýrem', desc: 'olivy, balsamico + domácí focaccia', price: '220,-' },
+          { name: 'Caesar salát', desc: 'podáváno s domácí focacciou', price: '220,-' }
+        ]
+      }
+    ],
+    extras: [
+      '<strong>Speciální nabídka:</strong> Aktuální dobroty a sezónní speciality (vč. burgerů) vám ráda sdělí obsluha.'
+    ]
+  },
 
-  { cat: 'rizky', label: 'Řízky & Maso', name: 'Vepřový řízek z krkovice', desc: '200 g dozlatova usmaženého masa, citron, okurka, příloha dle výběru.', price: '215 Kč', unit: '200 g' },
-  { cat: 'rizky', label: 'Řízky & Maso', name: 'Kuřecí řízek v křupavé strouhance', desc: '200 g kuřecích prsou, citron a domácí tatarská omáčka.', price: '205 Kč', unit: '200 g' },
-  { cat: 'rizky', label: 'Maso na prkně', name: 'Pečená žebra v pivní marinádě', desc: '500 g masitých žeber s křenem, hořčicí, kozími rohy a domácím fokáčem.', price: '299 Kč', unit: '500 g' },
+  chutovky: {
+    groups: [
+      {
+        title: 'Chuťovky z kuchyně',
+        items: [
+          { name: 'Cibulové kroužky', price: '79,-', unit: '200 g' },
+          { name: 'Bramborové lupínky', price: '79,-', unit: '200 g' },
+          { name: 'Hranolky s kečupem', price: '65,-', unit: '200 g' },
+          { name: 'Pizza tyčky', price: '99,-' },
+          { name: 'Utopenec', price: '65,-' }
+        ]
+      },
+      {
+        title: 'Pochutiny k pivu',
+        items: [
+          { name: 'Arašídy', price: '39,-' },
+          { name: 'Chipsy', price: '42,-' },
+          { name: 'Brambůrky', price: '42,-' },
+          { name: 'Křupky', price: '39,-' },
+          { name: 'Tyčky', price: '49,-' },
+          { name: 'Mandle', price: '51,-' },
+          { name: 'Kešu', price: '51,-' }
+        ]
+      }
+    ]
+  },
 
-  { cat: 'fokace', label: 'Domácí fokáč', name: 'Rozmarýnový fokáč s olivovým olejem', desc: 'Horká křupavá focaccia přímo z pece s hrubozrnnou solí.', price: '89 Kč', unit: '1 ks' },
-  { cat: 'fokace', label: 'Domácí fokáč', name: 'Česnekový fokáč s parmazánem', desc: 'Potřený čerstvým česnekem, zasypaný parmazánem, podávaný s dipem.', price: '109 Kč', unit: '1 ks' },
-  { cat: 'fokace', label: 'Pro partu', name: 'Pivní prkno chuťovek', desc: 'Cibulové kroužky, pizza tyčinky, sýrové nugetky, nakládaný hermelín a 3 dipy.', price: '279 Kč', unit: '3–4 osoby' }
-];
+  bar: {
+    groups: [
+      {
+        title: 'Míchané nápoje',
+        items: [
+          { name: 'Cuba Libre', price: '93,-' },
+          { name: 'Bavorák', price: '83,-' },
+          { name: 'Aperol Spritz', price: '105,-' },
+          { name: 'Gin + Tonic', price: '89,-' }
+        ]
+      },
+      {
+        title: 'Víno & Sekty',
+        items: [
+          { name: 'Grüner Veltliner', price: '30,-', unit: '0,1 l' },
+          { name: 'Blauer Zweigelt', price: '30,-', unit: '0,1 l' },
+          { name: 'Prosecco', price: '65,-', unit: '0,2 l' },
+          { name: 'Bohemia Sekt Demi', price: '259,-', unit: '0,75 l' }
+        ]
+      },
+      {
+        title: 'Rum',
+        note: '0,04 l',
+        items: [
+          { name: 'Tuzemský rum, Káva', price: '49,-', unit: '0,04 l' },
+          { name: 'Cheguevara', price: '49,-', unit: '0,04 l' },
+          { name: 'Captain Morgan', price: '58,-', unit: '0,04 l' },
+          { name: 'Republika', price: '59,-', unit: '0,04 l' },
+          { name: 'Malibu', price: '59,-', unit: '0,04 l' },
+          { name: 'Bacardi', price: '64,-', unit: '0,04 l' },
+          { name: 'Bucanero', price: '64,-', unit: '0,04 l' },
+          { name: 'Havana', price: '64,-', unit: '0,04 l' },
+          { name: 'Heffron', price: '69,-', unit: '0,04 l' },
+          { name: 'Legendario', price: '64,-', unit: '0,04 l' },
+          { name: 'Diplomatico', price: '119,-', unit: '0,04 l' }
+        ]
+      },
+      {
+        title: 'Destiláty & Likéry',
+        note: '0,04 l',
+        items: [
+          { name: 'Fernet Stock', price: '54,-', unit: '0,04 l' },
+          { name: 'Fernet Stock Citrus', price: '54,-', unit: '0,04 l' },
+          { name: 'Becherovka', price: '54,-', unit: '0,04 l' },
+          { name: 'Slivovice', price: '60,-', unit: '0,04 l' },
+          { name: 'Myslivec', price: '54,-', unit: '0,04 l' },
+          { name: 'Jägermeister', price: '64,-', unit: '0,04 l' },
+          { name: 'Peprmint', price: '49,-', unit: '0,04 l' },
+          { name: 'Baileys', price: '64,-', unit: '0,04 l' }
+        ]
+      },
+      {
+        title: 'Whisky & Bourbon',
+        note: '0,04 l',
+        items: [
+          { name: 'Johnnie Walker', price: '64,-', unit: '0,04 l' },
+          { name: 'Ballantine’s', price: '64,-', unit: '0,04 l' },
+          { name: 'Tullamore Dew', price: '64,-', unit: '0,04 l' },
+          { name: 'Chivas Regal', price: '69,-', unit: '0,04 l' },
+          { name: 'Jameson', price: '64,-', unit: '0,04 l' },
+          { name: 'Jim Beam', price: '65,-', unit: '0,04 l' },
+          { name: 'Jack Daniel’s', price: '75,-', unit: '0,04 l' },
+          { name: 'Jack Daniel’s Honey', price: '75,-', unit: '0,04 l' }
+        ]
+      },
+      {
+        title: 'Vodka, Gin & Tequila',
+        note: '0,04 l',
+        items: [
+          { name: 'Jelzin', price: '49,-', unit: '0,04 l' },
+          { name: 'Stolichnaya', price: '59,-', unit: '0,04 l' },
+          { name: 'Absolut', price: '59,-', unit: '0,04 l' },
+          { name: 'Finlandia', price: '59,-', unit: '0,04 l' },
+          { name: 'Beefeater', price: '64,-', unit: '0,04 l' },
+          { name: 'Beefeater Pink', price: '64,-', unit: '0,04 l' },
+          { name: 'Beefeater Orange', price: '64,-', unit: '0,04 l' },
+          { name: 'Olmeca Silver', price: '65,-', unit: '0,04 l' },
+          { name: 'Olmeca Gold', price: '65,-', unit: '0,04 l' }
+        ]
+      }
+    ]
+  }
+};
 
 // Animované pozadí v HERO (plynulé prolínání fotek)
 const heroSlides = document.querySelectorAll('.hero-slide');
@@ -33,29 +232,46 @@ if (heroSlides.length > 1) {
   }, 5500);
 }
 
-// Menu tabule — výchozí kategorie "Na čepu" (neotevírá hned celé menu)
+// Menu tabule — výchozí záložka "Pivo & Nealko"
 let activeCat = 'pivo';
-const boardList = document.getElementById('boardList');
+const boardContainer = document.getElementById('boardContainer');
 const tabs = document.querySelectorAll('.btab');
 
 function renderBoard() {
-  const filtered = activeCat === 'all'
-    ? BOARD_ITEMS
-    : BOARD_ITEMS.filter((item) => item.cat === activeCat);
+  const section = MENU_GROUPS[activeCat];
+  if (!section) return;
 
-  boardList.innerHTML = filtered.map((item) => `
-    <article class="board-item">
-      <div>
-        <span class="board-cat">${item.label}</span>
-        <h3>${item.name}</h3>
-        <p>${item.desc}</p>
+  const groupsHtml = section.groups.map((group) => `
+    <div class="board-group">
+      <div class="board-group-head">
+        <h3>${group.title}</h3>
+        ${group.note ? `<span>${group.note}</span>` : ''}
       </div>
-      <div class="board-price">
-        ${item.price}
-        <small>${item.unit}</small>
+      <div class="board-list">
+        ${group.items.map((item) => `
+          <article class="board-item">
+            <div>
+              <div class="board-item-head">
+                <h4>${item.name}</h4>
+                ${item.allergen ? `<span class="board-allergen">${item.allergen}</span>` : ''}
+              </div>
+              ${item.desc ? `<p>${item.desc}</p>` : ''}
+            </div>
+            <div class="board-price">
+              ${item.price}
+              ${item.unit ? `<small>${item.unit}</small>` : ''}
+            </div>
+          </article>
+        `).join('')}
       </div>
-    </article>
+    </div>
   `).join('');
+
+  const extrasHtml = section.extras
+    ? `<div class="board-extras">${section.extras.map((line) => `<span>${line}</span>`).join('')}</div>`
+    : '';
+
+  boardContainer.innerHTML = `<div class="board-groups">${groupsHtml}${extrasHtml}</div>`;
 }
 
 tabs.forEach((t) => {
@@ -125,7 +341,7 @@ clubForm.addEventListener('submit', (e) => {
   configResult.innerHTML = `
     <strong>Poptávka připravena pro ${name} (${guests} osob):</strong><br>
     ${selectedVenue} • ${stations}<br>
-    <a href="mailto:info@pivnicepizzapokr.cz?subject=${subject}&body=${body}">Odeslat e-mailem do POKRu</a> nebo zavolejte na <a href="tel:+420608822342">+420 608 822 342</a>.
+    <a href="mailto:info@pivnicepizzapokr.cz?subject=${subject}&body=${body}">Odeslat e-mailem do POKRu</a> nebo zavolejte na <a href="tel:+420725732322">+420 725 732 322</a>.
   `;
 });
 
